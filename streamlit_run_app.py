@@ -18,8 +18,14 @@ with open('tfidf_vectorizer.pkl', 'rb') as f:
     vectorizer = pickle.load(f)
 
 # Load amazonreviews.csv from specific path
-csv_path = r"C:\Users\aswaq\Documents\Sentiment_project\amazonreviews.csv"
+import os
+
+csv_path = os.path.join(os.path.dirname(__file__), 'amazonreviews.csv')
+print("Resolved CSV path:", csv_path)
+print("Does file exist?:", os.path.isfile(csv_path))
+
 df = pd.read_csv(csv_path)
+
 
 # Preprocessing function
 def preprocess(text):
